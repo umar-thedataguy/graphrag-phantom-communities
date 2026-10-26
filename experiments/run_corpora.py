@@ -13,6 +13,7 @@ import pathlib
 import sys
 import time
 
+import networkx as nx
 import numpy as np
 
 SRC = pathlib.Path(__file__).resolve().parents[1] / "src"
@@ -49,7 +50,6 @@ def main():
         # The statistical audit runs on the unweighted backbone, because
         # the degree-preserving swap null is exact for simple unweighted
         # graphs (double_edge_swap does not preserve edge weights).
-        import networkx as nx
         G_uw = nx.Graph()
         G_uw.add_nodes_from(G.nodes())
         G_uw.add_edges_from(G.edges())
