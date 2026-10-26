@@ -1,0 +1,6 @@
+networkx>=3.0
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+graspologic>=3.3     # provides hierarchical_leiden, the clusterer GraphRAG wraps
+nltk>=3.8            # public-domain Gutenberg corpora for the real-text experiments

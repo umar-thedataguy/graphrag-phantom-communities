@@ -1,0 +1,84 @@
+{
+  "seed": 20251024,
+  "B": 199,
+  "rows": [
+    {
+      "corpus": "austen-emma.txt",
+      "chars": 887071,
+      "n_nodes": 110,
+      "n_edges": 351,
+      "q_observed": 0.29591480588631586,
+      "null_q_mean": 0.2581797429612001,
+      "p_value": 0.005,
+      "khat": 7,
+      "bonferroni_root_p": 0.005,
+      "n_tests": 1,
+      "leiden_level_counts": {
+        "0": 5,
+        "1": 13,
+        "2": 7
+      },
+      "leiden_leaf_communities": 18,
+      "leiden_total_communities": 25,
+      "fineness_ratio": 2.57,
+      "summaries_billed": 25,
+      "summaries_supported": 7,
+      "excess_summaries": 18,
+      "usd_billed_at_ref_price": 0.0225,
+      "usd_excess_at_ref_price": 0.0162,
+      "runtime_sec": 26.2
+    },
+    {
+      "corpus": "melville-moby_dick.txt",
+      "chars": 1242990,
+      "n_nodes": 180,
+      "n_edges": 360,
+      "q_observed": 0.5114236111111111,
+      "null_q_mean": 0.4344852154289969,
+      "p_value": 0.005,
+      "khat": 10,
+      "bonferroni_root_p": 0.005,
+      "n_tests": 1,
+      "leiden_level_counts": {
+        "0": 8,
+        "1": 23,
+        "2": 15,
+        "3": 4
+      },
+      "leiden_leaf_communities": 37,
+      "leiden_total_communities": 50,
+      "fineness_ratio": 3.7,
+      "summaries_billed": 50,
+      "summaries_supported": 10,
+      "excess_summaries": 40,
+      "usd_billed_at_ref_price": 0.045,
+      "usd_excess_at_ref_price": 0.036,
+      "runtime_sec": 17.0
+    },
+    {
+      "corpus": "chesterton-thursday.txt",
+      "chars": 320525,
+      "n_nodes": 48,
+      "n_edges": 90,
+      "q_observed": 0.3366049382716049,
+      "null_q_mean": 0.3226673490911346,
+      "p_value": 0.135,
+      "khat": 1,
+      "bonferroni_root_p": 0.135,
+      "n_tests": 1,
+      "leiden_level_counts": {
+        "0": 5,
+        "1": 4
+      },
+      "leiden_leaf_communities": 7,
+      "leiden_total_communities": 9,
+      "fineness_ratio": 7.0,
+      "summaries_billed": 9,
+      "summaries_supported": 1,
+      "excess_summaries": 8,
+      "usd_billed_at_ref_price": 0.0081,
+      "usd_excess_at_ref_price": 0.0072,
+      "runtime_sec": 7.2
+    }
+  ]
+}

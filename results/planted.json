@@ -1,0 +1,51 @@
+{
+  "seed": 20251023,
+  "B": 199,
+  "rows": [
+    {
+      "mu": 0.1,
+      "k_true": 5,
+      "n_nodes": 500,
+      "n_edges": 2580,
+      "q_observed": 0.7042059521663362,
+      "null_q_mean": 0.27860058434713075,
+      "p_value": 0.005,
+      "khat": 5,
+      "bonferroni_root_p": 0.03,
+      "n_tests": 6,
+      "leiden_leaf_communities": 99,
+      "leiden_total_communities": 132,
+      "runtime_sec": 134.9
+    },
+    {
+      "mu": 0.25,
+      "k_true": 5,
+      "n_nodes": 500,
+      "n_edges": 2529,
+      "q_observed": 0.5579302237188197,
+      "null_q_mean": 0.28115531145031725,
+      "p_value": 0.005,
+      "khat": 5,
+      "bonferroni_root_p": 0.03,
+      "n_tests": 6,
+      "leiden_leaf_communities": 107,
+      "leiden_total_communities": 142,
+      "runtime_sec": 60.5
+    },
+    {
+      "mu": 0.4,
+      "k_true": 5,
+      "n_nodes": 500,
+      "n_edges": 2524,
+      "q_observed": 0.4123682065797504,
+      "null_q_mean": 0.28229802022019856,
+      "p_value": 0.005,
+      "khat": 5,
+      "bonferroni_root_p": 0.03,
+      "n_tests": 6,
+      "leiden_leaf_communities": 109,
+      "leiden_total_communities": 143,
+      "runtime_sec": 57.3
+    }
+  ]
+}
