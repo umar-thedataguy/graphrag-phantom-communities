@@ -5,14 +5,13 @@
   "n_edges": 2677,
   "leiden": {
     "level_counts": {
-      "0": 14,
-      "1": 93,
-      "2": 108,
-      "3": 2
+      "0": 16,
+      "1": 103,
+      "2": 78
     },
-    "n_levels": 4,
-    "n_leaf_communities": 172,
-    "n_total_communities": 217
+    "n_levels": 3,
+    "n_leaf_communities": 159,
+    "n_total_communities": 197
   },
   "q_observed": 0.3277871417848664,
   "null_q_mean": 0.33097181269482423,
@@ -21,5 +20,5 @@
   "khat": 1,
   "bonferroni_p": 0.875,
   "n_tests": 1,
-  "runtime_sec": 119.9
+  "runtime_sec": 143.1
 }

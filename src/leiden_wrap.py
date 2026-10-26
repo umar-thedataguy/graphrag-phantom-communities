@@ -1,6 +1,11 @@
-"""Wrapper around graspologic.partition.hierarchical_leiden -- the SAME
-function Microsoft GraphRAG calls to build its community hierarchy
-(graphrag/index/operations/cluster_graph.py uses graspologic).
+"""GraphRAG's clusterer, called with GraphRAG's parameters.
+
+GraphRAG 3.3 (graphrag/graphs/hierarchical_leiden.py) calls
+graspologic_native.hierarchical_leiden with max_cluster_size=10,
+resolution=1.0, randomness=0.001, iterations=1 and seed=0xDEADBEEF, pinned to
+graspologic-native 1.2.x. graspologic's Python wrapper forwards exactly those
+arguments to the same native function, so we call it through the wrapper
+with GraphRAG's defaults.
 
 GraphRAG then pays for one LLM "community report" per community, across
 the nested levels. So the per-level community counts below are exactly
@@ -13,12 +18,13 @@ from collections import defaultdict
 import networkx as nx
 from graspologic.partition import hierarchical_leiden
 
-# GraphRAG's default
+# GraphRAG's defaults
 MAX_CLUSTER_SIZE = 10
+SEED = 0xDEADBEEF
 
 
 def graphrag_communities(G: nx.Graph, max_cluster_size: int = MAX_CLUSTER_SIZE,
-                         seed: int = 7) -> dict:
+                         seed: int = SEED) -> dict:
     """Run GraphRAG's clusterer; return per-level and leaf community counts."""
     H = nx.relabel_nodes(G, {n: str(n) for n in G.nodes()})
     partitions = hierarchical_leiden(H, max_cluster_size=max_cluster_size,

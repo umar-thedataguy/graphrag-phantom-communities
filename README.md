@@ -11,13 +11,13 @@ clusterer.
 **TL;DR**
 
 - On a graph with **no structure at all**, GraphRAG's clusterer resolves
-  **172 leaf communities** (217 summaries billed). The exact test returns
+  **159 leaf communities** (197 summaries billed). The exact test returns
   **p = 0.875, K-hat = 1**. Every one of those summaries would describe noise.
 - On graphs with 5 planted communities, the test **recovers K = 5 exactly**
   at every noise level tested, so it has power, not just a high bar.
-- On three real corpora, **80% of the summaries GraphRAG would bill** are
+- On three real corpora, **78% of the summaries GraphRAG would bill** are
   for communities the wiring does not support; where structure is real the
-  partition is still **2.7–3.8× finer** than the data justifies.
+  partition is still **2.3–3.9× finer** than the data justifies.
 
 > **About this repository.** This is a from-scratch reconstruction of a team
 > project I did earlier; the original code was never committed. Every number
@@ -49,7 +49,7 @@ to the number GraphRAG bills?
 **The clusterer under audit.** GraphRAG 3.3.0's `cluster_graph` operation
 restricts the entity graph to its largest connected component and calls
 `graspologic_native.hierarchical_leiden` with `max_cluster_size=10`,
-`resolution=1.0`, `randomness=0.001`, `iterations=1`, pinned to
+`resolution=1.0`, `randomness=0.001`, `iterations=1`, `seed=0xDEADBEEF`, pinned to
 `graspologic-native 1.2.x` (its pyproject notes that 1.3 changes community
 counts and levels). We call the same native function with the same parameters
 through `graspologic`'s Python wrapper, with the same version pin in
@@ -97,14 +97,14 @@ community structure. 771 nodes, 2,677 edges, largest connected component.
 
 | | |
 |---|---|
-| GraphRAG's clusterer | **172 leaf communities**, 217 total across 4 levels (14 → 93 → 108 → 2) |
+| GraphRAG's clusterer | **159 leaf communities**, 197 total across 3 levels (16 → 103 → 78) |
 | Exact conditional test | Q_obs = 0.328 vs. null mean 0.331, **p = 0.875** |
 | K-hat | **1** (Bonferroni p = 0.875, one test) |
 
 ![Structureless control](results/fig_control.png)
 
 The observed graph sits in the middle of its own null distribution. GraphRAG
-would nonetheless bill 217 community reports for it.
+would nonetheless bill 197 community reports for it.
 
 ### 2. Power check: planted partition
 
@@ -114,9 +114,9 @@ community).
 
 | mu | p | K-hat | Bonferroni root p | Leiden leaves | Leiden total |
 |---|---|---|---|---|---|
-| 0.10 | 0.005 | **5** | 0.03 | 106 | 140 |
-| 0.25 | 0.005 | **5** | 0.03 | 114 | 151 |
-| 0.40 | 0.005 | **5** | 0.03 | 119 | 154 |
+| 0.10 | 0.005 | **5** | 0.03 | 107 | 144 |
+| 0.25 | 0.005 | **5** | 0.03 | 106 | 138 |
+| 0.40 | 0.005 | **5** | 0.03 | 116 | 152 |
 
 The test detects the structure and recovers the exact number of communities
 every time. Leiden's leaf partition is roughly 20× finer than the truth.
@@ -130,16 +130,16 @@ swap null is exact.
 
 | corpus | nodes / edges | p | K-hat | Leiden leaves | billed | excess | fineness |
 |---|---|---|---|---|---|---|---|
-| *Emma* | 110 / 351 | 0.005 | 7 | 19 | 25 | 18 | 2.7× |
-| *Moby Dick* | 180 / 360 | 0.005 | 10 | 38 | 51 | 41 | 3.8× |
-| *The Man Who Was Thursday* | 48 / 90 | 0.135 | 1 | 10 | 13 | 12 | 10.0× |
+| *Emma* | 110 / 351 | 0.005 | 7 | 16 | 21 | 14 | 2.3× |
+| *Moby Dick* | 180 / 360 | 0.005 | 10 | 39 | 53 | 43 | 3.9× |
+| *The Man Who Was Thursday* | 48 / 90 | 0.135 | 1 | 7 | 9 | 8 | 7.0× |
 
 ![Billed vs supported](results/fig_billed_vs_supported.png)
 
 Where structure is real (*Emma*, *Moby Dick*), the Leiden partition is still
-2.7–3.8× finer than the wiring supports. On the smallest graph the test does
-not reject at all, yet 13 summaries would be billed. Across the three corpora,
-71 of 89 billed summaries (80%) describe communities the data does not
+2.3–3.9× finer than the wiring supports. On the smallest graph the test does
+not reject at all, yet 9 summaries would be billed. Across the three corpora,
+65 of 83 billed summaries (78%) describe communities the data does not
 support.
 
 ### 4. Cost model
@@ -152,7 +152,7 @@ for illustration only. The price-independent number is the summary count.
 ## Not in the committed results
 
 **LLM extractor comparison.** `src/extract_llm.py` compares a local LLM
-extractor (any OpenAI-compatible endpoint; Ollama by default) against the
+extractor (Ollama's local chat API) against the
 regex baseline on node and edge recall, on the same text chunks. It was not
 run for the committed results because this build ran in a CPU-only sandbox
 with no model server. To run it:

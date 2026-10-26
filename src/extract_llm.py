@@ -1,4 +1,4 @@
-"""LLM entity extraction via any OpenAI-compatible endpoint (e.g. Ollama).
+"""LLM entity extraction via Ollama's local chat API (/api/chat, JSON mode).
 
 NOT RUN in the committed results -- this build was executed in a CPU-only
 sandbox without a local model server. Run it yourself with:

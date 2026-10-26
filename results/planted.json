@@ -13,9 +13,9 @@
       "khat": 5,
       "bonferroni_root_p": 0.03,
       "n_tests": 6,
-      "leiden_leaf_communities": 106,
-      "leiden_total_communities": 140,
-      "runtime_sec": 139.4
+      "leiden_leaf_communities": 107,
+      "leiden_total_communities": 144,
+      "runtime_sec": 162.9
     },
     {
       "mu": 0.25,
@@ -28,9 +28,9 @@
       "khat": 5,
       "bonferroni_root_p": 0.03,
       "n_tests": 6,
-      "leiden_leaf_communities": 114,
-      "leiden_total_communities": 151,
-      "runtime_sec": 61.4
+      "leiden_leaf_communities": 106,
+      "leiden_total_communities": 138,
+      "runtime_sec": 61.7
     },
     {
       "mu": 0.4,
@@ -43,9 +43,9 @@
       "khat": 5,
       "bonferroni_root_p": 0.03,
       "n_tests": 6,
-      "leiden_leaf_communities": 119,
-      "leiden_total_communities": 154,
-      "runtime_sec": 57.5
+      "leiden_leaf_communities": 116,
+      "leiden_total_communities": 152,
+      "runtime_sec": 58.2
     }
   ]
 }
