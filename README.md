@@ -172,8 +172,13 @@ python experiments/run_all.py        # ~10–15 min on a laptop CPU
 
 Or run the pieces: `run_control.py`, `run_planted.py`, `run_corpora.py`,
 then `make_figures.py`. Seeds are fixed, Leiden and Louvain are seeded, and
-node insertion order is deterministic, so a rerun reproduces the committed
-JSON given the same library versions.
+node insertion order is deterministic, so a rerun in a fresh environment
+reproduces the committed JSON exactly; this was verified in a clean virtual
+environment with a different numpy major version. The one library that
+matters is `networkx`: 3.7 changed the Louvain implementation, so under 3.7
+every modularity value shifts slightly and the Monte Carlo p-values move at
+the second decimal (0.875 → 0.905 on the control) while every conclusion is
+unchanged. `requirements.txt` therefore pins `networkx` to 3.6.
 
 ## Limitations
 
