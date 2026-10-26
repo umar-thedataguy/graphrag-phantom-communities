@@ -14,19 +14,19 @@
       "bonferroni_root_p": 0.005,
       "n_tests": 1,
       "leiden_level_counts": {
-        "0": 5,
-        "1": 13,
-        "2": 7
+        "0": 6,
+        "1": 14,
+        "2": 5
       },
-      "leiden_leaf_communities": 18,
+      "leiden_leaf_communities": 19,
       "leiden_total_communities": 25,
-      "fineness_ratio": 2.57,
+      "fineness_ratio": 2.71,
       "summaries_billed": 25,
       "summaries_supported": 7,
       "excess_summaries": 18,
       "usd_billed_at_ref_price": 0.0225,
       "usd_excess_at_ref_price": 0.0162,
-      "runtime_sec": 26.2
+      "runtime_sec": 25.2
     },
     {
       "corpus": "melville-moby_dick.txt",
@@ -40,20 +40,20 @@
       "bonferroni_root_p": 0.005,
       "n_tests": 1,
       "leiden_level_counts": {
-        "0": 8,
-        "1": 23,
+        "0": 7,
+        "1": 24,
         "2": 15,
-        "3": 4
+        "3": 5
       },
-      "leiden_leaf_communities": 37,
-      "leiden_total_communities": 50,
-      "fineness_ratio": 3.7,
-      "summaries_billed": 50,
+      "leiden_leaf_communities": 38,
+      "leiden_total_communities": 51,
+      "fineness_ratio": 3.8,
+      "summaries_billed": 51,
       "summaries_supported": 10,
-      "excess_summaries": 40,
-      "usd_billed_at_ref_price": 0.045,
-      "usd_excess_at_ref_price": 0.036,
-      "runtime_sec": 17.0
+      "excess_summaries": 41,
+      "usd_billed_at_ref_price": 0.0459,
+      "usd_excess_at_ref_price": 0.0369,
+      "runtime_sec": 18.8
     },
     {
       "corpus": "chesterton-thursday.txt",
@@ -68,17 +68,17 @@
       "n_tests": 1,
       "leiden_level_counts": {
         "0": 5,
-        "1": 4
+        "1": 8
       },
-      "leiden_leaf_communities": 7,
-      "leiden_total_communities": 9,
-      "fineness_ratio": 7.0,
-      "summaries_billed": 9,
+      "leiden_leaf_communities": 10,
+      "leiden_total_communities": 13,
+      "fineness_ratio": 10.0,
+      "summaries_billed": 13,
       "summaries_supported": 1,
-      "excess_summaries": 8,
-      "usd_billed_at_ref_price": 0.0081,
-      "usd_excess_at_ref_price": 0.0072,
-      "runtime_sec": 7.2
+      "excess_summaries": 12,
+      "usd_billed_at_ref_price": 0.0117,
+      "usd_excess_at_ref_price": 0.0108,
+      "runtime_sec": 7.3
     }
   ]
 }

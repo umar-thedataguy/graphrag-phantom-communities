@@ -11,13 +11,13 @@ clusterer.
 **TL;DR**
 
 - On a graph with **no structure at all**, GraphRAG's clusterer resolves
-  **156 leaf communities** (194 summaries billed). The exact test returns
+  **172 leaf communities** (217 summaries billed). The exact test returns
   **p = 0.875, K-hat = 1**. Every one of those summaries would describe noise.
 - On graphs with 5 planted communities, the test **recovers K = 5 exactly**
   at every noise level tested, so it has power, not just a high bar.
-- On three real corpora, **79% of the summaries GraphRAG would bill** are
+- On three real corpora, **80% of the summaries GraphRAG would bill** are
   for communities the wiring does not support; where structure is real the
-  partition is still **2.6–3.7× finer** than the data justifies.
+  partition is still **2.7–3.8× finer** than the data justifies.
 
 > **About this repository.** This is a from-scratch reconstruction of a team
 > project I did earlier; the original code was never committed. Every number
@@ -46,10 +46,16 @@ to the number GraphRAG bills?
 
 ## Method
 
-**The clusterer under audit** is `graspologic.partition.hierarchical_leiden`
-with `max_cluster_size=10`, the same function and default that GraphRAG's
-`cluster_graph` operation calls. We wrap it directly rather than reimplement
-it, so the communities we test are the communities GraphRAG would summarize.
+**The clusterer under audit.** GraphRAG 3.3.0's `cluster_graph` operation
+restricts the entity graph to its largest connected component and calls
+`graspologic_native.hierarchical_leiden` with `max_cluster_size=10`,
+`resolution=1.0`, `randomness=0.001`, `iterations=1`, pinned to
+`graspologic-native 1.2.x` (its pyproject notes that 1.3 changes community
+counts and levels). We call the same native function with the same parameters
+through `graspologic`'s Python wrapper, with the same version pin in
+`requirements.txt`, so the communities we test are the communities GraphRAG
+would summarize. The hypothesis test itself never uses Leiden, so the p-values
+and K-hat below do not depend on this version; only the community counts do.
 We count leaf communities and total communities across all levels; the latter
 is the number of summaries billed in full indexing mode.
 
@@ -91,14 +97,14 @@ community structure. 771 nodes, 2,677 edges, largest connected component.
 
 | | |
 |---|---|
-| GraphRAG's clusterer | **156 leaf communities**, 194 total across 3 levels (16 → 100 → 78) |
+| GraphRAG's clusterer | **172 leaf communities**, 217 total across 4 levels (14 → 93 → 108 → 2) |
 | Exact conditional test | Q_obs = 0.328 vs. null mean 0.331, **p = 0.875** |
 | K-hat | **1** (Bonferroni p = 0.875, one test) |
 
 ![Structureless control](results/fig_control.png)
 
 The observed graph sits in the middle of its own null distribution. GraphRAG
-would nonetheless bill 194 community reports for it.
+would nonetheless bill 217 community reports for it.
 
 ### 2. Power check: planted partition
 
@@ -108,9 +114,9 @@ community).
 
 | mu | p | K-hat | Bonferroni root p | Leiden leaves | Leiden total |
 |---|---|---|---|---|---|
-| 0.10 | 0.005 | **5** | 0.03 | 99 | 132 |
-| 0.25 | 0.005 | **5** | 0.03 | 107 | 142 |
-| 0.40 | 0.005 | **5** | 0.03 | 109 | 143 |
+| 0.10 | 0.005 | **5** | 0.03 | 106 | 140 |
+| 0.25 | 0.005 | **5** | 0.03 | 114 | 151 |
+| 0.40 | 0.005 | **5** | 0.03 | 119 | 154 |
 
 The test detects the structure and recovers the exact number of communities
 every time. Leiden's leaf partition is roughly 20× finer than the truth.
@@ -124,16 +130,16 @@ swap null is exact.
 
 | corpus | nodes / edges | p | K-hat | Leiden leaves | billed | excess | fineness |
 |---|---|---|---|---|---|---|---|
-| *Emma* | 110 / 351 | 0.005 | 7 | 18 | 25 | 18 | 2.6× |
-| *Moby Dick* | 180 / 360 | 0.005 | 10 | 37 | 50 | 40 | 3.7× |
-| *The Man Who Was Thursday* | 48 / 90 | 0.135 | 1 | 7 | 9 | 8 | 7.0× |
+| *Emma* | 110 / 351 | 0.005 | 7 | 19 | 25 | 18 | 2.7× |
+| *Moby Dick* | 180 / 360 | 0.005 | 10 | 38 | 51 | 41 | 3.8× |
+| *The Man Who Was Thursday* | 48 / 90 | 0.135 | 1 | 10 | 13 | 12 | 10.0× |
 
 ![Billed vs supported](results/fig_billed_vs_supported.png)
 
 Where structure is real (*Emma*, *Moby Dick*), the Leiden partition is still
-2.6–3.7× finer than the wiring supports. On the smallest graph the test does
-not reject at all, yet 9 summaries would be billed. Across the three corpora,
-66 of 84 billed summaries (79%) describe communities the data does not
+2.7–3.8× finer than the wiring supports. On the smallest graph the test does
+not reject at all, yet 13 summaries would be billed. Across the three corpora,
+71 of 89 billed summaries (80%) describe communities the data does not
 support.
 
 ### 4. Cost model
