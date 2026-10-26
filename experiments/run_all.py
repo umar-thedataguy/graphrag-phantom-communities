@@ -1,4 +1,4 @@
-"""Run the full audit end to end. Takes ~15-20 min on a laptop CPU."""
+"""Run the full audit end to end. Takes ~10-15 min on a laptop CPU."""
 import subprocess
 import sys
 import pathlib
