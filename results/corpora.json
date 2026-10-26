@@ -25,8 +25,7 @@
       "summaries_supported": 7,
       "excess_summaries": 14,
       "usd_billed_at_ref_price": 0.0189,
-      "usd_excess_at_ref_price": 0.0126,
-      "runtime_sec": 34.4
+      "usd_excess_at_ref_price": 0.0126
     },
     {
       "corpus": "melville-moby_dick.txt",
@@ -52,8 +51,7 @@
       "summaries_supported": 10,
       "excess_summaries": 43,
       "usd_billed_at_ref_price": 0.0477,
-      "usd_excess_at_ref_price": 0.0387,
-      "runtime_sec": 22.9
+      "usd_excess_at_ref_price": 0.0387
     },
     {
       "corpus": "chesterton-thursday.txt",
@@ -77,8 +75,7 @@
       "summaries_supported": 1,
       "excess_summaries": 8,
       "usd_billed_at_ref_price": 0.0081,
-      "usd_excess_at_ref_price": 0.0072,
-      "runtime_sec": 9.8
+      "usd_excess_at_ref_price": 0.0072
     }
   ]
 }

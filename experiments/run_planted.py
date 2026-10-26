@@ -44,10 +44,9 @@ def main():
             "n_tests": kh.n_tests,
             "leiden_leaf_communities": leiden["n_leaf_communities"],
             "leiden_total_communities": leiden["n_total_communities"],
-            "runtime_sec": round(time.time() - t0, 1),
         }
         rows.append(row)
-        print(row)
+        print(row, f"(elapsed {time.time() - t0:.1f}s)")
 
     (RESULTS / "planted.json").write_text(json.dumps(
         {"seed": SEED + 1, "B": B, "rows": rows}, indent=2))

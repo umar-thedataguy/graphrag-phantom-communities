@@ -14,8 +14,7 @@
       "bonferroni_root_p": 0.03,
       "n_tests": 6,
       "leiden_leaf_communities": 107,
-      "leiden_total_communities": 144,
-      "runtime_sec": 162.9
+      "leiden_total_communities": 144
     },
     {
       "mu": 0.25,
@@ -29,8 +28,7 @@
       "bonferroni_root_p": 0.03,
       "n_tests": 6,
       "leiden_leaf_communities": 106,
-      "leiden_total_communities": 138,
-      "runtime_sec": 61.7
+      "leiden_total_communities": 138
     },
     {
       "mu": 0.4,
@@ -44,8 +42,7 @@
       "bonferroni_root_p": 0.03,
       "n_tests": 6,
       "leiden_leaf_communities": 116,
-      "leiden_total_communities": 152,
-      "runtime_sec": 58.2
+      "leiden_total_communities": 152
     }
   ]
 }

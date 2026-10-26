@@ -164,6 +164,8 @@ python src/extract_llm.py --book austen-emma --chunks 50
 
 ## Reproduce
 
+Python 3.10–3.12 (tested on 3.11 and 3.12).
+
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt

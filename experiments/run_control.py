@@ -55,8 +55,8 @@ def main():
         "khat": kh.khat,
         "bonferroni_p": kh.root_p_bonferroni,
         "n_tests": kh.n_tests,
-        "runtime_sec": round(time.time() - t0, 1),
     }
+    print(f"elapsed {time.time() - t0:.1f}s")
     (RESULTS / "control.json").write_text(json.dumps(out, indent=2))
     np.savez(RESULTS / "control_nulldist.npz",
              null_qs=null_qs, q_obs=q_obs)

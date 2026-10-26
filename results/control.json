@@ -19,6 +19,5 @@
   "p_value": 0.875,
   "khat": 1,
   "bonferroni_p": 0.875,
-  "n_tests": 1,
-  "runtime_sec": 143.1
+  "n_tests": 1
 }

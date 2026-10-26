@@ -75,10 +75,9 @@ def main():
             "excess_summaries": cost.excess_summaries,
             "usd_billed_at_ref_price": cost.usd_billed,
             "usd_excess_at_ref_price": cost.usd_excess,
-            "runtime_sec": round(time.time() - t0, 1),
         }
         rows.append(row)
-        print(json.dumps(row, indent=2))
+        print(json.dumps(row, indent=2), f"(elapsed {time.time() - t0:.1f}s)")
 
     (RESULTS / "corpora.json").write_text(json.dumps(
         {"seed": SEED + 2, "B": B, "rows": rows}, indent=2))
